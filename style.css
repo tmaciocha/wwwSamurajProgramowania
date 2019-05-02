@@ -1,11 +1,119 @@
+
+/*wyzerowanie domyślnych ustawień przeglądarki*/
 * {
     margin: 0; 
     padding: 0;
     font-family:Roboto, arial;
-    box-sizing: border-box;
+    box-sizing: border-box; /*zamiast dodawać do elementów padding, border, zmieniamy to na ustawienia takie że od maksymalnej szerokości czy wysokości jest odejmowana wartość border, padding */
 }
 
+body{background-color: darkkhaki}
+
+/*# to odwołanie do ID, wrapper to cały element strony nazwany w index.html*/
 #wrapper{
     max-width: 1000px;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;/*można też zapisać "0 auto 0 auto" przechodzimy zgodnie ze wstazówkami zegara*/
+    background-color: white;    
+}
+
+header img{
+    width: 100%;/*ustawienie ograzka w headerze, by zawsze zajmował 100% miejsca, skaluje się, jest responsywny*/ 
+    display:block; /*lepsze zachowanie grafiki*/
+}
+
+img.left{
+    width: 25%;
+    display: block;
+    float:left;/*umożliwia opływanie obrazka przez tekst */
+    padding: 0 10px;
+    border-radius: 50% 30%;
+}
+
+nav{
+    overflow: hidden;/*element będzie miał taką wysokość jaką zajmują jego dzieci.w naszym przypadku będzie zgodny z tym co zajmują pozycje menu*/
+}
+
+nav a{
+    display: block;
+    width: 25%;
+    float: left;
+    text-align: center;
+    background-color: darkcyan;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    -webkit-transition: all 1s ease; /*by transision zadziałało w innych przeglądarkach, musi być z webkit też*/
+    transition: all 1s ease;/*Zmiana trwa 1sec; ease - płynna zmiana, wolno przyspiesza i przebiega i kończy; przejcie z jednego elementu na drugi, taka prosta animacja, płynniejszcze przejście. Transision stosuje się w elemencie, który zmieniamy. Transision wyzwalana jest przez najechanie myszą na element, a więc nowe wpłaściwości okreśone są w hover. */
+}
+a.menu{
+    /*display: inline-block; --zmiana liniowego elementu na liniowy ale też blokowy. Gdyby był tylko blokowy, to byłby pod spodem. w ten sposób zmieniliśmy na ustaewienie blokowe
+    width: 25%; -- podział menu na 4 części
+    padding: 15px; 30px;
+    color: white;
+    text-decoration: none; --- usuwa podkreślenie z linków
+    text-align: center;*/
+}
+
+a.menu:hover{
+    background-color: crimson;
+    cursor: pointer;
+}
+
+.active{
+    background-color: crimson;
+}
+
+article{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+article h1{
+    font-size: 30px;
+    text-align: center;
+    margin:0 10% 20px 10%;
+    padding-bottom: 15px;
+    border-bottom: 3px crimson solid;
+    
+    
+}
+
+article p{
+    text-align: justify/*test zostaje rozszerzony na całą szerokość*/
+    padding: 0 20px;
+    line-height: 25px; /*wysokość linii w tekście*/
+    font-size: 18px;
+    padding: 15px 0;
+    
+}
+
+iframe{
+    width: 100%;
+}
+
+footer{
+    height:40px;
+    background-color: darkcyan;
+    color:white;
+    line-height: 40px;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+@media(max-width:800px){ /*@MEDIA - ustawienia pod konkretne rozmiary ekranów, zawsze dawać na koniec, bo ostatnie elementy są stosowane, czyli jeżeli @media max 500px  z h1 określonym na 10px umieścimy na samej górze, to całe formatowanie które zrobimy później zlikwiduje to co utworzyliśmy w media.*/
+    nav a{
+    width: 50%;
+    }
+    
+    article h1{
+        font-size: 22px;
+    }
+}
+
+
+@media(max-width:600px){
+    nav a{
+    width: 100%;
+    }
 }
